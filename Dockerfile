@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     cmake \
     libopenblas-dev \
     liblapack-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -14,8 +15,8 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
-# Install Python dependencies with custom CMake args for dlib
-RUN pip install --no-cache-dir -r requirements.txt --global-option="build_ext" --global-option="-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port for Render
 EXPOSE $PORT
