@@ -1,12 +1,9 @@
 FROM python:3.11-slim
 
-# Install system dependencies for dlib and OpenCV
+# Install minimal system dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    cmake \
     libopenblas-dev \
     liblapack-dev \
-    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
