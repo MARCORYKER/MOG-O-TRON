@@ -1,5 +1,5 @@
-# Use Python 3.11 slim image
-FROM python:3.11-slim
+# Use Python 3.10 slim image (better wheel support for dlib)
+FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /app
@@ -14,8 +14,12 @@ RUN apt-get update && apt-get install -y \
     cmake \
     build-essential \
     libpng-dev \
+    libjpeg-dev \
+    libx11-dev \
+    libatlas-base-dev \
+    gfortran \
     && pip install --no-cache-dir -r requirements.txt \
-    && apt-get purge -y --auto-remove cmake build-essential libpng-dev \
+    && apt-get purge -y --auto-remove cmake build-essential libpng-dev libjpeg-dev libx11-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the rest of the project files
@@ -24,5 +28,5 @@ COPY . .
 # Expose port for Render
 EXPOSE $PORT
 
-# Run the app with the correct file name
-CMD ["python", "help.py"]
+# Run the app with gunicorn (since you have it in requirements.txt)
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "help:app"]
