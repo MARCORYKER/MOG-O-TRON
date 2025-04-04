@@ -1,6 +1,6 @@
 blinker==1.8.2
 click==8.1.7
-dlib==19.24.2; platform_machine != 'aarch64' @ https://github.com/jloh02/dlib/releases/download/v19.24.2/dlib-19.24.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+dlib==19.24.2
 Flask==3.0.3
 itsdangerous==2.2.0
 Jinja2==3.1.4
