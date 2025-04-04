@@ -13,7 +13,7 @@ WORKDIR /app
 COPY . .
 
 # Install dlib wheel directly, then other requirements
-RUN pip install --no-cache-dir https://github.com/jloh02/dlib/releases/download/v19.24.2/dlib-19.24.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl \
+RUN pip install --no-cache-dir https://github.com/jloh02/dlib/releases/download/v19.24.2/dlib-19.24.2-cp311-cp311-manylinux_2_17_x86_64.whl \
     && pip install --no-cache-dir -r requirements.txt
 
 # Expose port for Render
