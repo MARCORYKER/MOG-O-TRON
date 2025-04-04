@@ -1,9 +1,14 @@
 FROM python:3.11-slim
 
-# Install minimal system dependencies
+# Install system dependencies for dlib build
 RUN apt-get update && apt-get install -y \
     libopenblas-dev \
     liblapack-dev \
+    cmake \
+    build-essential \
+    libpng-dev \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apt-get purge -y --auto-remove cmake build-essential libpng-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -11,9 +16,6 @@ WORKDIR /app
 
 # Copy project files
 COPY . .
-
-# Install all dependencies from requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port for Render
 EXPOSE $PORT
