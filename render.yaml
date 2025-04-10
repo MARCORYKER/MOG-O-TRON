@@ -1,8 +1,10 @@
 services:
   - type: web
-    name: mog-o-tron
+    name: mogotron
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python app.py"
-    plan: free  # or starter if you need more juice
-    preInstallCommand: "apt-get update && apt-get install -y cmake=3.18.4-1"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+
