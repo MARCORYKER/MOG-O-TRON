@@ -1,1 +1,30 @@
-*.mov filter=lfs diff=lfs merge=lfs -text
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# VS Code & IDEs
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs & temp files
+*.log
+*.tmp
+
+# Flask env
+instance/
+.webassets-cache
+
+# Render specific
+.env
+
